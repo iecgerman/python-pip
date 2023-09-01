@@ -17,7 +17,7 @@ https://platzi.com/clases/4261-python-pip/55126-flujo-de-trabajo-en-python/
 
 # Game Proyect
 
-´´´sh
+```sh
 cd game
 python3(aquí puedes poner tab y se auto completa la version completa) main.py
-´´´
+```
