@@ -21,3 +21,11 @@ https://platzi.com/clases/4261-python-pip/55126-flujo-de-trabajo-en-python/
 cd game
 python3(aquí puedes poner tab y se auto completa la version completa) main.py
 ```
+
+## FOLLOW ME
+
+# https://github.com/iecgerman/
+
+```sh
+ESTE TIPO DE TIPS SON LOS QUE SE USAN EN LOS COMENTARIOS DE PLATZI
+```
