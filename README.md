@@ -139,3 +139,21 @@ tomli==2.0.1
 typing_extensions==4.7.1
 (env) german@iecgerman:~/python-pip/game$ 
 
+
+# requirements.txt 11/20
+https://platzi.com/clases/4261-python-pip/55131-requirementstxt/
+
+para crear el al archivo requirements.txt
+(env) german@iecgerman:~/python-pip/app$ pip3 freeze > requirements.txt
+
+
+# Instrucciones para APP PROJECT
+
+```sh
+git clone
+cd app
+source env/bin/activate
+pip3 install -r requirements.txt
+python3 main.py
+```
+
