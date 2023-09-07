@@ -158,3 +158,76 @@ pip3 install -r requirements.txt
 python3 main.py
 ```
 
+# Solicitudes HTTP con Requests 12/20
+https://platzi.com/clases/4261-python-pip/55132-solicitudes-http-con-requests/ 
+
+cd python-pip/
+mkdir web-server
+
+Verificamos cual es el entorno que esta encendido:
+```sh
+which python3
+```
+usamos deacivate en caso de estar en otro entorno, por ejemplo app
+
+cd web-server/
+
+Creamos un entorno virtual sólo para el proyecto web-server:
+```sh
+python3 -m venv env
+```
+
+Activamos el entorno virtual:
+```sh
+source env/bin/activate
+```
+
+Volvemos a verificar que apuntemos al ambiente de web-server:
+```sh
+which python3
+```
+
+Instalamos la dependencia que necesitamos que es Requests
+```sh
+pip3 install requests
+```
+Verificamos la instalación con un freeze
+```sh
+pip3 freeze
+```
+Como es un proyecto nuevo creamos el archivo requeriments.txt por si una persona nueva quiere desplegar este proyecto
+```sh
+pip freeze > requeriments.txt
+```
+
+code .
+python3 main.py 
+
+(env) german@iecgerman:~/python-pip/web-server$ python3 main.py 
+200
+[{"id":1,"name":"Clothes","image":"https://picsum.photos/640/640?r=6397","creationAt":"2023-09-07T03:30:09.000Z","updatedAt":"2023-09-07T03:30:09.000Z"},{"id":2,"name":"Electronics","image":"https://picsum.photos/640/640?r=5186","creationAt":"2023-09-07T03:30:09.000Z","updatedAt":"2023-09-07T03:30:09.000Z"},{"id":3,"name":"Furniture","image":"https://picsum.photos/640/640?r=2966","creationAt":"2023-09-07T03:30:09.000Z","updatedAt":"2023-09-07T03:30:09.000Z"},{"id":4,"name":"Shoes","image":"https://picsum.photos/640/640?r=5871","creationAt":"2023-09-07T03:30:09.000Z","updatedAt":"2023-09-07T03:30:09.000Z"},{"id":5,"name":"Others","image":"https://picsum.photos/640/640?r=5523","creationAt":"2023-09-07T03:30:09.000Z","updatedAt":"2023-09-07T03:30:09.000Z"},{"id":6,"name":"Plants","image":"https://cdn.pixabay.com/photo/2016/11/18/17/20/flowers-1835619_960_720.jpg","creationAt":"2023-09-07T06:42:18.000Z","updatedAt":"2023-09-07T06:42:18.000Z"}]
+<class 'str'>
+
+nos da dice que es un string y tenemos que trasformarlo a una lista:
+
+print(type(r.text))
+    categories = r.json()
+    for category in categories:
+        print(category['name'])
+
+(env) german@iecgerman:~/python-pip/web-server$ python3 main.py 
+200
+[{"id":1,"name":"Clothes","image":"https://picsum.photos/640/640?r=6397","creationAt":"2023-09-07T03:30:09.000Z","updatedAt":"2023-09-07T03:30:09.000Z"},{"id":2,"name":"Electronics","image":"https://picsum.photos/640/640?r=5186","creationAt":"2023-09-07T03:30:09.000Z","updatedAt":"2023-09-07T03:30:09.000Z"},{"id":3,"name":"Furniture","image":"https://picsum.photos/640/640?r=2966","creationAt":"2023-09-07T03:30:09.000Z","updatedAt":"2023-09-07T03:30:09.000Z"},{"id":4,"name":"Shoes","image":"https://picsum.photos/640/640?r=5871","creationAt":"2023-09-07T03:30:09.000Z","updatedAt":"2023-09-07T03:30:09.000Z"},{"id":5,"name":"Others","image":"https://picsum.photos/640/640?r=5523","creationAt":"2023-09-07T03:30:09.000Z","updatedAt":"2023-09-07T03:30:09.000Z"},{"id":6,"name":"Plants","image":"https://cdn.pixabay.com/photo/2016/11/18/17/20/flowers-1835619_960_720.jpg","creationAt":"2023-09-07T06:42:18.000Z","updatedAt":"2023-09-07T06:42:18.000Z"}]
+<class 'str'>
+Clothes
+Electronics
+Furniture
+Shoes
+Others
+Plants
+
+ahora si nos a una lista la cual podemos, iterar, transformar, filtrar, etc.
+
+
+# Pandas 13/20
+https://platzi.com/clases/4261-python-pip/55133-pandas/
