@@ -275,3 +275,108 @@ https://fastapi.tiangolo.com/advanced/custom-response/?h=response+html
 
 # ¿Qué es Docker? 15/20
 https://platzi.com/clases/4261-python-pip/55135-que-es-docker/
+
+https://docs.docker.com/
+
+Docker
+
+Es una herramienta que nos sirve para aislar entornos de ejecucion, eso lo hace con contenedores que tiene docker por detras.
+
+# Instalación de Docker 16/20
+https://platzi.com/clases/4261-python-pip/55136-instalacion-de-docker/
+
+Instalación en Ubuntu 🐧
+
+https://docs.docker.com/engine/install/ubuntu/
+
+# german@iecgerman:~$ sudo apt-get update
+Obj:1 https://download.docker.com/linux/ubuntu jammy InRelease
+Obj:2 http://packages.microsoft.com/repos/code stable InRelease                
+Des:3 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]      
+Obj:4 http://mx.archive.ubuntu.com/ubuntu jammy InRelease                      
+Obj:5 https://dl.google.com/linux/chrome/deb stable InRelease                  
+Des:6 http://mx.archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]     
+Obj:7 https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy InRelease     
+Des:8 http://mx.archive.ubuntu.com/ubuntu jammy-backports InRelease [109 kB]   
+Descargados 338 kB en 1s (274 kB/s) 
+Leyendo lista de paquetes... Hecho
+
+# german@iecgerman:~$ sudo apt-get install ca-certificates curl gnupg lsb-release
+Leyendo lista de paquetes... Hecho
+Creando árbol de dependencias... Hecho
+Leyendo la información de estado... Hecho
+lsb-release ya está en su versión más reciente (11.1.0ubuntu4).
+ca-certificates ya está en su versión más reciente (20230311ubuntu0.22.04.1).
+curl ya está en su versión más reciente (7.81.0-1ubuntu1.13).
+gnupg ya está en su versión más reciente (2.2.27-3ubuntu2.1).
+0 actualizados, 0 nuevos se instalarán, 0 para eliminar y 0 no actualizados.
+
+# german@iecgerman:~$ sudo mkdir -p /etc/apt/keyrings
+german@iecgerman:~$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+El fichero '/etc/apt/keyrings/docker.gpg' ya existe. ¿Sobreescribir? (s/N) S
+
+# german@iecgerman:~$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+El fichero '/etc/apt/keyrings/docker.gpg' ya existe. ¿Sobreescribir? (s/N) S
+
+# german@iecgerman:~$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+[sudo] contraseña para german: 
+
+# german@iecgerman:~$ sudo apt-get update
+Obj:1 http://mx.archive.ubuntu.com/ubuntu jammy InRelease
+Obj:2 https://download.docker.com/linux/ubuntu jammy InRelease                 
+Obj:3 http://mx.archive.ubuntu.com/ubuntu jammy-updates InRelease              
+Obj:4 https://dl.google.com/linux/chrome/deb stable InRelease                  
+Obj:5 http://packages.microsoft.com/repos/code stable InRelease                
+Obj:6 http://security.ubuntu.com/ubuntu jammy-security InRelease               
+Des:7 http://mx.archive.ubuntu.com/ubuntu jammy-backports InRelease [109 kB]   
+Obj:8 https://ppa.launchpadcontent.net/git-core/ppa/ubuntu jammy InRelease     
+Descargados 109 kB en 1s (141 kB/s)
+Leyendo lista de paquetes... Hecho
+
+# german@iecgerman:~$ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+Leyendo lista de paquetes... Hecho
+Creando árbol de dependencias... Hecho
+Leyendo la información de estado... Hecho
+containerd.io ya está en su versión más reciente (1.6.22-1).
+docker-ce-cli ya está en su versión más reciente (5:24.0.6-1~ubuntu.22.04~jammy).
+docker-ce ya está en su versión más reciente (5:24.0.6-1~ubuntu.22.04~jammy).
+docker-compose-plugin ya está en su versión más reciente (2.21.0-1~ubuntu.22.04~jammy).
+0 actualizados, 0 nuevos se instalarán, 0 para eliminar y 0 no actualizados.
+
+# german@iecgerman:~$ sudo docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+719385e32844: Pull complete 
+Digest: sha256:dcba6daec718f547568c562956fa47e1b03673dd010fe6ee58ca806767031d1c
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+german@iecgerman:~$ 
+
+
+# Dockerizando scripts de Python 17/20
+https://platzi.com/clases/4261-python-pip/55137-dockerizando-scripts-de-python/
+
+
+
+
