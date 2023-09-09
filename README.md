@@ -231,3 +231,47 @@ ahora si nos a una lista la cual podemos, iterar, transformar, filtrar, etc.
 
 # Pandas 13/20
 https://platzi.com/clases/4261-python-pip/55133-pandas/
+
+PANDAS
+
+Es una de las librerias mas utilizadas en python y nos sirven para analizar y manipular datos de archivos duros
+
+  673  cd python-pip/
+  674  ll
+  675  cd app
+  676  ll
+  677  source env/bin/activate
+  678  which python3
+  679  cat requirements.txt 
+  680  pip3 install pandas
+  681  pip3 freeze
+  684  cat requirements.txt
+  685  pip3 freeze > requirements.txt 
+  686  cat requirements.txt
+  687  python3 main.py 
+  688  ll
+  689  history
+
+# Python para Backend: web server con FastAPI 14/20
+https://platzi.com/clases/4261-python-pip/55134-python-para-backend-web-server-con-fastapi/
+
+https://fastapi.tiangolo.com/#installation
+
+https://www.uvicorn.org/ 
+https://fastapi.tiangolo.com/advanced/custom-response/?h=response+html 
+
+  695  cd web-server
+  696  source env/bin/activate
+  697  which python3
+  698  pip3 install fastapi
+  700  pip3 install "uvicorn[standard]"
+  701  pip3 freeze
+  702  pip3 freeze > requeriments.txt 
+  703  cat requeriments.txt 
+       ya no se corre el main como python3 main.py como un script ahora usamos:
+  704  uvicorn main:app --reload # este es un flag para que recargue el servidor
+
+# Python en contenedores de Docker
+
+# ¿Qué es Docker? 15/20
+https://platzi.com/clases/4261-python-pip/55135-que-es-docker/
