@@ -603,3 +603,95 @@ Con Docker tu puedes tener diferentes con tenedores y en cada uno podrías tener
 # Docker para el día a día: automatizando la vinculación de archivos 18/20
 https://platzi.com/clases/4261-python-pip/55138-docker-para-el-dia-a-dia-automatizando-la-vinculac/
 
+En docker-compose.yml hacemos lso siguientes cambios:
+
+services:
+  app-csv:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+
+y con esto podemos ahora si hacer en tiempo real cambio por ejemplo en charts.py:
+
+def generate_pie_chart(labels, values):  
+  fig, ax = plt.subplots()
+  ax.pie(values, labels=labels)
+  ax.axis('equal')
+  plt.savefig('chart_pie_cambios_finales.png')
+  plt.close()
+
+  pero antes ejecutamos los commandos:
+
+```sh
+sudo docker compose up -d
+sudo docker compose exec app-csv bash
+cat charts.py
+```
+
+# Dockerizando web services 19/20
+https://platzi.com/clases/4261-python-pip/55139-dockerizando-web-services/
+
+Aplicamos la técnica legendaria de copiar y pegar en los archivos:
+
+app/Dockerfile
+
+Aquí todo se queda igual excepto la última línea:
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+
+app/docker-compose.yml
+
+hacemos estos cambios:
+
+services:
+  web-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - '80:80'
+
+y ahora si entramos a la carpeta web-server y vovlemos a construir con:
+
+# german@iecgerman:~/python-pip/web-server$ sudo docker compose build
+[+] Building 12.2s (10/10) FINISHED                              docker:default
+ => [web-server internal] load build definition from Dockerfile            0.0s
+ => => transferring dockerfile: 334B                                       0.0s
+ => [web-server internal] load .dockerignore                               0.0s
+ => => transferring context: 2B                                            0.0s
+ => [web-server internal] load metadata for docker.io/library/python:3.10  0.3s
+ => [web-server 1/5] FROM docker.io/library/python:3.10@sha256:1a8dcc0736  0.0s
+ => [web-server internal] load build context                               0.0s
+ => => transferring context: 256.10kB                                      0.0s
+ => CACHED [web-server 2/5] WORKDIR /app                                   0.0s
+ => [web-server 3/5] COPY requirements.txt /app/requirements.txt           0.0s
+ => [web-server 4/5] RUN pip install --no-cache-dir --upgrade -r /app/re  11.3s
+ => [web-server 5/5] COPY . /app                                           0.2s
+ => [web-server] exporting to image                                        0.3s 
+ => => exporting layers                                                    0.3s 
+ => => writing image sha256:f139ab5bc18965f98448d58a809fc1f78fb80024cba3b  0.0s 
+ => => naming to docker.io/library/web-server-web-server                   0.0s 
+german@iecgerman:~/python-pip/web-server$       
+
+
+Levantamos con:
+
+# german@iecgerman:~/python-pip/web-server$ sudo docker compose up -d             
+[+] Running 2/2
+ ✔ Network web-server_default         Crea...                              0.1s 
+ ✔ Container web-server-web-server-1  Started                              0.0s 
+german@iecgerman:~/python-pip/web-server$ 
+
+
+Verificamos si levanto con:
+
+# german@iecgerman:~/python-pip/web-server$ sudo docker compose ps
+NAME                      IMAGE                   COMMAND                                       SERVICE      CREATED         STATUS         PORTS
+web-server-web-server-1   web-server-web-server   "uvicorn main:app --host 0.0.0.0 --port 80"   web-server   2 minutes ago   Up 2 minutes   0.0.0.0:80->80/tcp, :::80->80/tcp
+german@iecgerman:~/python-pip/web-server$ 
+
+
